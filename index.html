@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insta_ai_bot | Recommended Links</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #0b132b 0%, #1c2541 50%, #2e082e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 580px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* Header Profile */
+        .profile {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #00e5ff, #ff007f);
+            margin: 0 auto 16px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #0b132b;
+            box-shadow: 0 8px 24px rgba(0, 229, 255, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+        .handle {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .bio {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 320px;
+            line-height: 1.4;
+        }
+        /* Links List */
+        .links-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 22px 24px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .card-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0, 229, 255, 0.08), rgba(255, 0, 127, 0.08));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .card-link:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 229, 255, 0.1);
+        }
+        .card-link:hover::before {
+            opacity: 1;
+        }
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+        .card-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        /* Badges */
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-tech {
+            background: rgba(0, 229, 255, 0.12);
+            color: #00e5ff;
+            border: 1px solid rgba(0, 229, 255, 0.25);
+        }
+        .badge-career {
+            background: rgba(255, 0, 127, 0.12);
+            color: #ff007f;
+            border: 1px solid rgba(255, 0, 127, 0.25);
+        }
+        .card-date {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+        }
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #ffffff;
+            margin-bottom: 14px;
+        }
+        .card-action {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.85);
+            transition: color 0.2s ease;
+        }
+        .card-link:hover .card-action {
+            color: #00e5ff;
+        }
+        .arrow-icon {
+            transition: transform 0.3s ease;
+        }
+        .card-link:hover .arrow-icon {
+            transform: translateX(4px);
+        }
+        .no-links {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 40px;
+            font-style: italic;
+        }
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.5px;
+        }
+        footer a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        footer a:hover {
+            color: #00e5ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Profile info -->
+        <div class="profile">
+            <div class="avatar">🤖</div>
+            <h1 class="handle">@insta_ai_bot</h1>
+            <p class="bio">Daily Indian Tech Updates & Career Hacks perfect ga. Follow @insta_ai_bot for job notifications!</p>
+        </div>
+
+        <!-- Links List -->
+        <div class="links-list">
+            
+            <a href="https://www.indeed.com/career-advice/interviewing/star-method-interview" target="_blank" class="card-link">
+                <div class="card-content">
+                    <div class="card-header-row">
+                        <span class="badge badge-career">Career Advice</span>
+                        <span class="card-date">2026-06-19</span>
+                    </div>
+                    <h2 class="card-title">INTERVIEW STORYTELLING MASTERY!</h2>
+                    <div class="card-action">
+                        <span>Open Resource</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            </a>
+            
+
+            <a href="https://www.zomato.com/careers" target="_blank" class="card-link">
+                <div class="card-content">
+                    <div class="card-header-row">
+                        <span class="badge badge-tech">Tech News</span>
+                        <span class="card-date">2026-06-19</span>
+                    </div>
+                    <h2 class="card-title">ZOMATO 12 LPA HIRING!</h2>
+                    <div class="card-action">
+                        <span>Open Resource</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            </a>
+            
+
+            <a href="https://blog.hubspot.com/sales/linkedin-profile-tips" target="_blank" class="card-link">
+                <div class="card-content">
+                    <div class="card-header-row">
+                        <span class="badge badge-career">Career Advice</span>
+                        <span class="card-date">2026-06-18</span>
+                    </div>
+                    <h2 class="card-title">POWER UP YOUR LINKEDIN!</h2>
+                    <div class="card-action">
+                        <span>Open Resource</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            </a>
+            
+
+            <a href="https://krutrim.com/" target="_blank" class="card-link">
+                <div class="card-content">
+                    <div class="card-header-row">
+                        <span class="badge badge-tech">Tech News</span>
+                        <span class="card-date">2026-06-18</span>
+                    </div>
+                    <h2 class="card-title">AI IN TELUGU IS REAL!</h2>
+                    <div class="card-action">
+                        <span>Open Resource</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            </a>
+            
+
+            <a href="https://www.iirs.gov.in/EDUSAT-News" target="_blank" class="card-link">
+                <div class="card-content">
+                    <div class="card-header-row">
+                        <span class="badge badge-tech">Tech News</span>
+                        <span class="card-date">2026-06-18</span>
+                    </div>
+                    <h2 class="card-title">ISRO FREE COURSES! ️</h2>
+                    <div class="card-action">
+                        <span>Open Resource</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            </a>
+            
+
+            <a href="https://novoresume.com/" target="_blank" class="card-link">
+                <div class="card-content">
+                    <div class="card-header-row">
+                        <span class="badge badge-career">Career Advice</span>
+                        <span class="card-date">2026-06-18</span>
+                    </div>
+                    <h2 class="card-title">ATS HACKS: JOB CHALANGA!</h2>
+                    <div class="card-action">
+                        <span>Open Resource</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            </a>
+            
+
+            <a href="https://nextstep.tcs.com/" target="_blank" class="card-link">
+                <div class="card-content">
+                    <div class="card-header-row">
+                        <span class="badge badge-tech">Tech News</span>
+                        <span class="card-date">2026-06-09</span>
+                    </div>
+                    <h2 class="card-title">TCS CRAZY HIRING UPDATE!</h2>
+                    <div class="card-action">
+                        <span>Open Resource</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            </a>
+            
+
+            <a href="https://novoresume.com/" target="_blank" class="card-link">
+                <div class="card-content">
+                    <div class="card-header-row">
+                        <span class="badge badge-career">Career Advice</span>
+                        <span class="card-date">2026-06-09</span>
+                    </div>
+                    <h2 class="card-title">RESUME SHORTLIST HACK!</h2>
+                    <div class="card-action">
+                        <span>Open Resource</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            </a>
+            
+
+            <a href="https://hunter.io/" target="_blank" class="card-link">
+                <div class="card-content">
+                    <div class="card-header-row">
+                        <span class="badge badge-career">Career Advice</span>
+                        <span class="card-date">2026-06-09</span>
+                    </div>
+                    <h2 class="card-title">COLD EMAIL FOR JOBS!</h2>
+                    <div class="card-action">
+                        <span>Open Resource</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            </a>
+            
+
+            <a href="https://news.google.com/" target="_blank" class="card-link">
+                <div class="card-content">
+                    <div class="card-header-row">
+                        <span class="badge badge-tech">Tech News</span>
+                        <span class="card-date">2026-06-09</span>
+                    </div>
+                    <h2 class="card-title">INDIA TECH BOOM OR BUST?</h2>
+                    <div class="card-action">
+                        <span>Open Resource</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            </a>
+            
+
+            <a href="https://news.google.com/" target="_blank" class="card-link">
+                <div class="card-content">
+                    <div class="card-header-row">
+                        <span class="badge badge-tech">Tech News</span>
+                        <span class="card-date">2026-06-09</span>
+                    </div>
+                    <h2 class="card-title">INDIA TECH: NEXT LEVEL JOBS!</h2>
+                    <div class="card-action">
+                        <span>Open Resource</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            </a>
+            
+
+            <a href="https://novoresume.com/" target="_blank" class="card-link">
+                <div class="card-content">
+                    <div class="card-header-row">
+                        <span class="badge badge-career">Career Advice</span>
+                        <span class="card-date">2026-06-09</span>
+                    </div>
+                    <h2 class="card-title">RESUME SHORTLISTING SECRETS!</h2>
+                    <div class="card-action">
+                        <span>Open Resource</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            </a>
+            
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 <a href="https://instagram.com/insta_ai_bot" target="_blank">@insta_ai_bot</a>. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+.env
+.env.real
+cookies.json
+*.png
+startup_run.log
+__pycache__/

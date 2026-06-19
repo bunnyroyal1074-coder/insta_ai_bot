@@ -1,0 +1,18 @@
+{
+  "sidecars": [
+    {
+      "name": "Morning News Agent",
+      "schedule": "0 9 * * *",
+      "timezone": "Asia/Kolkata",
+      "command": "python app.py --mode morning",
+      "description": "Trigger daily morning news post at 09:00 IST in Vaibhav Sisinty style."
+    },
+    {
+      "name": "Evening Career Agent",
+      "schedule": "0 20 * * *",
+      "timezone": "Asia/Kolkata",
+      "command": "python app.py --mode evening",
+      "description": "Trigger daily evening career advice post at 20:00 IST in Vaibhav Sisinty style."
+    }
+  ]
+}
