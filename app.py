@@ -1440,9 +1440,30 @@ def run_single_post(mode, history_db):
                 available_items.append(item)
 
         if not available_items:
-            print(f"[!] Warning: No unused items in '{mode}' corpus (or all are duplicates). Selecting oldest corpus item as fallback, PRESERVING history.")
-            # Fallback to the very first item in the corpus, but DO NOT clear the history
-            selected_item = corpus[0]
+            print(f"[!] Warning: No unused items in '{mode}' corpus (or all are duplicates). Selecting least-recently-used corpus item as fallback, PRESERVING history.")
+            # Find the corpus item that was posted the longest time ago (least recently used)
+            last_posted_dates = {}
+            for past_item in history_db.get("posted_items", []):
+                past_id = past_item.get("id")
+                past_date = past_item.get("date", "")
+                if past_id:
+                    if past_id not in last_posted_dates or past_date > last_posted_dates[past_id]:
+                        last_posted_dates[past_id] = past_date
+                        
+            best_item = corpus[0]
+            oldest_date = "9999-99-99 99:99:99"
+            
+            for item in corpus:
+                item_id = item["id"]
+                item_date = last_posted_dates.get(item_id, "")
+                if not item_date:
+                    best_item = item
+                    break
+                elif item_date < oldest_date:
+                    oldest_date = item_date
+                    best_item = item
+                    
+            selected_item = best_item
         else:
             selected_item = available_items[0]
         print(f"[*] Selected Content ID (Fallback): '{selected_item['id']}' | Title: '{selected_item['title']}'")
@@ -1500,6 +1521,9 @@ def run_single_post(mode, history_db):
         return False
 
 def main():
+    # Load environment variables immediately on startup
+    load_env()
+
     parser = argparse.ArgumentParser(description="Instagram automation bot image generator sidecar.")
     parser.add_argument(
         "--mode", 
