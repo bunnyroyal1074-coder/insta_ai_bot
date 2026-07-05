@@ -9,7 +9,8 @@
     "tcs_hiring_2026",
     "tcs_hiring_2026",
     "ai_20260626_121427",
-    "isro_free_courses"
+    "isro_free_courses",
+    "ai_20260705_075826"
   ],
   "evening_career_history": [
     "resume_ats_hack",
@@ -23,9 +24,9 @@
     "ai_20260626_121624",
     "ai_20260629_134306"
   ],
-  "last_post_time": "2026-06-26T12:17:06.415158",
-  "last_morning_post_date": "2026-06-26",
-  "last_evening_post_date": "2026-06-26",
+  "last_post_time": "2026-06-29T13:43:52.205882",
+  "last_morning_post_date": "2026-06-29",
+  "last_evening_post_date": "2026-06-29",
   "last_post_mode": "evening",
   "posted_titles": [
     "TCS CRAZY HIRING UPDATE! \ud83d\ude80",
@@ -47,7 +48,8 @@
     "INDIA'S AI REVOLUTION",
     "NETWORKING FOR INTROVERTS",
     "ISRO FREE COURSES! \ud83d\udef0\ufe0f",
-    "PROJECTS: LAND YOUR DREAM JOB!"
+    "PROJECTS: LAND YOUR DREAM JOB!",
+    "INDIA'S STARTUP SHAKEUP!"
   ],
   "posted_items": [
     {
@@ -324,6 +326,20 @@
       "link": "https://careerhacks.com/portfolio-guide",
       "date": "2026-06-29 13:43:49",
       "mode": "evening"
+    },
+    {
+      "id": "ai_20260705_075826",
+      "title": "INDIA'S STARTUP SHAKEUP!",
+      "bullets": [
+        "Fintech sector lo *fresh opportunities* vasthunnai, *27 new companies* ni chudandi!",
+        "AI startups *talent ni laagutunnai*, *massive hiring* challenge undi!",
+        "Indian immigrants *tech world* lo strong mark, *billion-dollar* startups create chesaru!",
+        "But *startup layoffs* continue avtunnai, *AI automation* new problem create chestundi."
+      ],
+      "cta": "Get Full Scoop! Link in Bio! @TechPulseNow",
+      "link": "https://www.techcrunch.com/india-startups-ai-fintech-news",
+      "date": "2026-07-05 07:59:17",
+      "mode": "morning"
     }
   ]
 }
