@@ -29,7 +29,8 @@ MORNING_NEWS_CORPUS = [
             "Normal preparation saripodu, project highlights showcase cheyadame key!"
         ],
         "cta": "Apply Link in Bio! @insta_ai_bot",
-        "link": "https://nextstep.tcs.com/"
+        "link": "https://nextstep.tcs.com/",
+        "caption_explanation": "Ee post lo TCS massive fresher hiring details, required skills focus, and drives path gurinchi complete description highlights vunnai bhayya."
     },
     {
         "id": "krutrim_telugu_ai",
@@ -41,7 +42,8 @@ MORNING_NEWS_CORPUS = [
             "Tech and language barriers complete break aypotunnai, leverage this tool!"
         ],
         "cta": "Apply Link in Bio! @insta_ai_bot",
-        "link": "https://krutrim.com/"
+        "link": "https://krutrim.com/",
+        "caption_explanation": "Ee post lo Krutrim AI tool local language support parameters, startup advantages, and language barrier solutions details vunnai bhayya."
     },
     {
         "id": "isro_free_courses",
@@ -53,7 +55,8 @@ MORNING_NEWS_CORPUS = [
             "Resume lo certificate code add cheskunte profile value *next level highlights*!"
         ],
         "cta": "Apply Link in Bio! @insta_ai_bot",
-        "link": "https://www.iirs.gov.in/EDUSAT-News"
+        "link": "https://www.iirs.gov.in/EDUSAT-News",
+        "caption_explanation": "Ee post lo ISRO GIS modeling & machine learning free certified courses details, enrollment rules, and resume values clear ga outline chesam."
     },
     {
         "id": "zomato_associate_dev",
@@ -65,7 +68,8 @@ MORNING_NEWS_CORPUS = [
             "Fast-paced startup environment and extreme growth. Apply right now!"
         ],
         "cta": "Apply Link in Bio! @insta_ai_bot",
-        "link": "https://www.zomato.com/careers"
+        "link": "https://www.zomato.com/careers",
+        "caption_explanation": "Ee post lo Zomato Associate Developer hiring details (12 LPA package), DSA evaluation, and Golang/React requirements outline chesam bhayya."
     }
 ]
 
@@ -80,7 +84,8 @@ EVENING_CAREER_CORPUS = [
             "Response and shortlisting rates guaranteed *double avtayi* in 1 week!"
         ],
         "cta": "Templates & Link in Bio! @insta_ai_bot",
-        "link": "https://novoresume.com/"
+        "link": "https://novoresume.com/",
+        "caption_explanation": "Ee post lo resume score increase cheyadaniki metrics addition instructions and ATS filter bypassing keywords usage analysis vundi."
     },
     {
         "id": "cold_email_strategy",
@@ -92,7 +97,8 @@ EVENING_CAREER_CORPUS = [
             "Follow-up scheduling correctly maintain cheyandi. Callbacks pichekkistai!"
         ],
         "cta": "Templates & Link in Bio! @insta_ai_bot",
-        "link": "https://hunter.io/"
+        "link": "https://hunter.io/",
+        "caption_explanation": "Ee post lo HRs ki direct cold emailing templates, length constraints, hooks implementation, and follow-ups guidelines explain chesam."
     },
     {
         "id": "top_skills_2026",
@@ -104,7 +110,8 @@ EVENING_CAREER_CORPUS = [
             "Resume solid design chesthe easy ga *8 LPA+ package* crack cheyochu."
         ],
         "cta": "Roadmap & Link in Bio! @insta_ai_bot",
-        "link": "https://roadmap.sh/"
+        "link": "https://roadmap.sh/",
+        "caption_explanation": "Ee post lo freshers and software engineers high-package job crack cheyadaniki build cheyalsina key technical skills guide details checklist vundi."
     },
     {
         "id": "technical_rounds_tips",
@@ -116,7 +123,8 @@ EVENING_CAREER_CORPUS = [
             "Clear representation and structured communication is *must* bhayya!"
         ],
         "cta": "Cheat Sheets & Link in Bio! @insta_ai_bot",
-        "link": "https://leetcode.com/"
+        "link": "https://leetcode.com/",
+        "caption_explanation": "Ee post lo technical interview rounds lo time & space complexity, design principles, and problem solving representation tips cover chesam."
     }
 ]
 
@@ -609,7 +617,8 @@ def generate_content_with_gemini(mode, scraped_news=None, history_db=None):
             "    \"4 bullet points. Style: Use high-energy, fun, professional 'Tanglish' (Telugu mixed with English) speaking tone. Write Telugu words using the English/Latin alphabet only (e.g. write 'bhayya', 'perfect ga', 'next level', 'pichekkistai'). NEVER use the native Telugu alphabet/script, and DO NOT use emojis in bullets. Format: Surround key words or metrics in asterisks like *this* to highlight them (e.g. '*40,000+ Freshers*'). Keep each bullet under 100 characters.\"\n"
             "  ],\n"
             "  \"cta\": \"A clean Call to Action pointing to the bio (e.g., 'Apply Link in Bio! @insta_ai_bot'), DO NOT use emojis\",\n"
-            "  \"link\": \"A real, active link/URL related to the news topic where users can read more or apply.\"\n"
+            "  \"link\": \"A real, active link/URL related to the news topic where users can read more or apply.\",\n"
+            "  \"caption_explanation\": \"A short, engaging explanation (1-2 sentences in Tanglish) of what this post is about and what type of content the post consists of, to be used in the Instagram caption. Tell the reader what they will find in the post image. DO NOT repeat the bullet points verbatim.\"\n"
             "}"
         )
     else:
@@ -624,7 +633,8 @@ def generate_content_with_gemini(mode, scraped_news=None, history_db=None):
             "    \"4 bullet points. Style: Use high-energy, fun, professional 'Tanglish' (Telugu mixed with English) speaking tone. Write Telugu words using the English/Latin alphabet only (e.g. write 'bhayya', 'perfect ga', 'next level', 'pichekkistai'). NEVER use the native Telugu alphabet/script, and DO NOT use emojis in bullets. Format: Surround key words or metrics in asterisks like *this* to highlight them (e.g. '*double avtayi*'). Keep each bullet under 100 characters.\"\n"
             "  ],\n"
             "  \"cta\": \"A clean Call to Action pointing to the bio (e.g., 'Templates & Link in Bio! @insta_ai_bot' or 'Roadmap & Link in Bio! @insta_ai_bot'), DO NOT use emojis\",\n"
-            "  \"link\": \"A real, active link/URL related to the career topic where users can get resources, templates, or roadmaps.\"\n"
+            "  \"link\": \"A real, active link/URL related to the career topic where users can get resources, templates, or roadmaps.\",\n"
+            "  \"caption_explanation\": \"A short, engaging explanation (1-2 sentences in Tanglish) of what this post is about and what type of content the post consists of, to be used in the Instagram caption. Tell the reader what they will find in the post image. DO NOT repeat the bullet points verbatim.\"\n"
             "}"
         )
 
@@ -649,9 +659,10 @@ def generate_content_with_gemini(mode, scraped_news=None, history_db=None):
                         "items": {"type": "STRING"}
                     },
                     "cta": {"type": "STRING"},
-                    "link": {"type": "STRING"}
+                    "link": {"type": "STRING"},
+                    "caption_explanation": {"type": "STRING"}
                 },
-                "required": ["title", "bullets", "cta"]
+                "required": ["title", "bullets", "cta", "caption_explanation"]
             }
         }
     }
@@ -669,7 +680,7 @@ def generate_content_with_gemini(mode, scraped_news=None, history_db=None):
         text_content = candidate.get("content", {}).get("parts", [{}])[0].get("text", "")
         
         post_data = json.loads(text_content)
-        if "title" in post_data and "bullets" in post_data and "cta" in post_data:
+        if "title" in post_data and "bullets" in post_data and "cta" in post_data and "caption_explanation" in post_data:
             bullets = post_data["bullets"]
             if len(bullets) < 4:
                 bullets += ["Follow our account for more daily hacks! 🚀"] * (4 - len(bullets))
@@ -1472,19 +1483,22 @@ def run_single_post(mode, history_db):
     generate_post(mode, selected_item)
 
     # Create Caption and Prepare Upload
-    caption_lines = [selected_item["title"], ""]
-    for bullet in selected_item["bullets"]:
-        clean_bullet = bullet.replace('*', '')
-        caption_lines.append(f"👉 {clean_bullet}")
-    caption_lines.append("")
-    caption_lines.append("🔗 Apply Link is in Bio! 👉 @insta_ai_bot")
-    caption_lines.append("")
-    caption_lines.append(f"🔥 {selected_item['cta']}")
-    caption_lines.append("")
-    caption_lines.append("Follow @insta_ai_bot for daily tech updates & career growth hacks! 🚀")
-    caption_lines.append("#indianstartups #fresherjobs #softwareengineer #growthschool #techintelugu")
+    caption_explanation = selected_item.get("caption_explanation", "")
+    caption_lines = [
+        selected_item["title"],
+        "",
+        caption_explanation,
+        "",
+        "🔗 Apply Link is in Bio! 👉 @insta_ai_bot",
+        "",
+        f"🔥 {selected_item['cta']}",
+        "",
+        "Follow @insta_ai_bot for daily tech updates & career growth hacks! 🚀",
+        "#indianstartups #fresherjobs #softwareengineer #growthschool #techintelugu"
+    ]
     
     instagram_caption = "\n".join(caption_lines)
+    print(f"\n[*] Prepared Instagram Caption:\n{'-'*50}\n{instagram_caption}\n{'-'*50}\n")
 
     # Upload Live
     upload_success = upload_to_instagram(OUTPUT_IMAGE, instagram_caption)
@@ -1500,6 +1514,7 @@ def run_single_post(mode, history_db):
             "bullets": selected_item["bullets"],
             "cta": selected_item.get("cta", ""),
             "link": selected_item.get("link", ""),
+            "caption_explanation": caption_explanation,
             "date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "mode": mode
         }
