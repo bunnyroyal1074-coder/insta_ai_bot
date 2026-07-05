@@ -23,13 +23,12 @@
     "ai_20260622_122926",
     "ai_20260625_143744",
     "ai_20260626_121624",
-    "ai_20260629_134306",
-    "ai_20260705_080745"
+    "ai_20260629_134306"
   ],
-  "last_post_time": "2026-07-05T08:08:25.116011",
+  "last_post_time": "2026-07-05T08:06:30",
   "last_morning_post_date": "2026-07-05",
-  "last_evening_post_date": "2026-07-05",
-  "last_post_mode": "evening",
+  "last_evening_post_date": "2026-06-29",
+  "last_post_mode": "morning",
   "posted_titles": [
     "TCS CRAZY HIRING UPDATE! \ud83d\ude80",
     "RESUME SHORTLIST HACK! \ud83d\udcc4",
@@ -52,8 +51,7 @@
     "ISRO FREE COURSES! \ud83d\udef0\ufe0f",
     "PROJECTS: LAND YOUR DREAM JOB!",
     "INDIA'S STARTUP SHAKEUP!",
-    "INDIA'S AI JOB WAVE!",
-    "PORTFOLIO MASTERCLASS!"
+    "INDIA'S AI JOB WAVE!"
   ],
   "posted_items": [
     {
@@ -358,20 +356,6 @@
       "link": "https://www.indianstartupnews.com/ai-jobs-fintech-boom",
       "date": "2026-07-05 08:06:30",
       "mode": "morning"
-    },
-    {
-      "id": "ai_20260705_080745",
-      "title": "PORTFOLIO MASTERCLASS!",
-      "bullets": [
-        "Mee portfolio *dynamic ga undali*, just PDFs kaadu, interactive *showcase* cheyyandi.",
-        "*Impact metrics* highlight cheyyandi, numbers tho mee value *prove cheyyandi* bhayya.",
-        "Each project lo *learning curve* explain cheyyandi, mee *growth* chupinchandi.",
-        "*Client testimonials* add cheyyandi, third-party validation mee profile ki *weight isthundi*."
-      ],
-      "cta": "Examples & Templates in Bio! @insta_ai_bot",
-      "link": "https://thebalancecareers.com/create-an-impressive-career-portfolio-2061986",
-      "date": "2026-07-05 08:08:22",
-      "mode": "evening"
     }
   ]
 }
