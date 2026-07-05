@@ -23,7 +23,8 @@
     "ai_20260622_122926",
     "ai_20260625_143744",
     "ai_20260626_121624",
-    "ai_20260629_134306"
+    "ai_20260629_134306",
+    "ai_20260705_080745"
   ],
   "last_post_time": "2026-06-29T13:43:52.205882",
   "last_morning_post_date": "2026-06-29",
@@ -51,7 +52,8 @@
     "ISRO FREE COURSES! \ud83d\udef0\ufe0f",
     "PROJECTS: LAND YOUR DREAM JOB!",
     "INDIA'S STARTUP SHAKEUP!",
-    "INDIA'S AI JOB WAVE!"
+    "INDIA'S AI JOB WAVE!",
+    "PORTFOLIO MASTERCLASS!"
   ],
   "posted_items": [
     {
@@ -356,6 +358,20 @@
       "link": "https://www.indianstartupnews.com/ai-jobs-fintech-boom",
       "date": "2026-07-05 08:06:30",
       "mode": "morning"
+    },
+    {
+      "id": "ai_20260705_080745",
+      "title": "PORTFOLIO MASTERCLASS!",
+      "bullets": [
+        "Mee portfolio *dynamic ga undali*, just PDFs kaadu, interactive *showcase* cheyyandi.",
+        "*Impact metrics* highlight cheyyandi, numbers tho mee value *prove cheyyandi* bhayya.",
+        "Each project lo *learning curve* explain cheyyandi, mee *growth* chupinchandi.",
+        "*Client testimonials* add cheyyandi, third-party validation mee profile ki *weight isthundi*."
+      ],
+      "cta": "Examples & Templates in Bio! @insta_ai_bot",
+      "link": "https://thebalancecareers.com/create-an-impressive-career-portfolio-2061986",
+      "date": "2026-07-05 08:08:22",
+      "mode": "evening"
     }
   ]
 }
