@@ -24,7 +24,8 @@
     "ai_20260622_122926",
     "ai_20260625_143744",
     "ai_20260626_121624",
-    "ai_20260629_134306"
+    "ai_20260629_134306",
+    "ai_20260710_084320"
   ],
   "last_post_time": "2026-07-05T08:06:30",
   "last_morning_post_date": "2026-07-05",
@@ -53,7 +54,8 @@
     "PROJECTS: LAND YOUR DREAM JOB!",
     "INDIA'S STARTUP SHAKEUP!",
     "INDIA'S AI JOB WAVE!",
-    "INDIA TECH: BOOM & SHIFT!"
+    "INDIA TECH: BOOM & SHIFT!",
+    "HACKATHON JOB HUNTING!"
   ],
   "posted_items": [
     {
@@ -373,6 +375,21 @@
       "caption_explanation": "Ee post lo India tech current *landscape* enti, *opportunities* ekkada unnayi, and *market shifts* ela unnai annadi chudandi. Latest headlines breakdown *easy ga* explain chestundi!",
       "date": "2026-07-10 08:42:01",
       "mode": "morning"
+    },
+    {
+      "id": "ai_20260710_084320",
+      "title": "HACKATHON JOB HUNTING!",
+      "bullets": [
+        "Hackathons lo *problem-solving skills* ni highlight cheyyandi, judges attention *immediate ga* catch chestaru.",
+        "Networking opportunities *pichekkistai*, recruiters tho *direct connect* avvandi bhayya, leads vasthayi.",
+        "Your project prototype *visible ga* untundi, resume lo *next level* achievement ga add cheyyandi.",
+        "Real-world challenges ki *innovative solutions* ivvandi, companies *ready ga hire* chestaru bhayya."
+      ],
+      "cta": "Hackathon Guide & Link in Bio! @insta_ai_bot",
+      "link": "https://www.career.guru/hackathon-jobs",
+      "caption_explanation": "Hackathons kevalam coding ki kaadu bhayya, job opportunities ki kuda next level platform. Ee post lo, hackathons use chesi ela dream job thechukovalo tips chudandi!",
+      "date": "2026-07-10 08:44:22",
+      "mode": "evening"
     }
   ]
 }
