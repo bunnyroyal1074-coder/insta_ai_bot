@@ -12,7 +12,8 @@
     "isro_free_courses",
     "ai_20260705_075826",
     "ai_20260705_080549",
-    "ai_20260710_084056"
+    "ai_20260710_084056",
+    "ai_20260710_093504"
   ],
   "evening_career_history": [
     "resume_ats_hack",
@@ -27,9 +28,9 @@
     "ai_20260629_134306",
     "ai_20260710_084320"
   ],
-  "last_post_time": "2026-07-05T08:06:30",
-  "last_morning_post_date": "2026-07-05",
-  "last_evening_post_date": "2026-06-29",
+  "last_post_time": "2026-07-10T08:44:25.277673",
+  "last_morning_post_date": "2026-07-10",
+  "last_evening_post_date": "2026-07-10",
   "last_post_mode": "morning",
   "posted_titles": [
     "TCS CRAZY HIRING UPDATE! \ud83d\ude80",
@@ -55,7 +56,8 @@
     "INDIA'S STARTUP SHAKEUP!",
     "INDIA'S AI JOB WAVE!",
     "INDIA TECH: BOOM & SHIFT!",
-    "HACKATHON JOB HUNTING!"
+    "HACKATHON JOB HUNTING!",
+    "TECH INDIA: DYNAMIC SHIFT!"
   ],
   "posted_items": [
     {
@@ -390,6 +392,21 @@
       "caption_explanation": "Hackathons kevalam coding ki kaadu bhayya, job opportunities ki kuda next level platform. Ee post lo, hackathons use chesi ela dream job thechukovalo tips chudandi!",
       "date": "2026-07-10 08:44:22",
       "mode": "evening"
+    },
+    {
+      "id": "ai_20260710_093504",
+      "title": "TECH INDIA: DYNAMIC SHIFT!",
+      "bullets": [
+        "India lo *27 active Fintech firms* next-gen innovation ki lead chestunnai!",
+        "Indian immigrants *global tech economy* lo *5 trillion dollar* value add chesaru!",
+        "Startups lo *AI-driven layoffs* continue avtunnai, hiring trends ni change chestunnai!",
+        "Tech jobs lo *31% women representation* chala encouraging, career paths expand avtunnai!"
+      ],
+      "cta": "Read Full Analysis Now! @insta_ai_bot",
+      "link": "https://www.exampletechdigest.com/india-tech-insights",
+      "caption_explanation": "Ee post lo Indian Tech current landscape gurinchi top news bytes chudandi. Fintech nunchi layoffs varaku, industry lo jarugutunna major shifts ni fast ga telusukondi!",
+      "date": "2026-07-10 09:35:41",
+      "mode": "morning"
     }
   ]
 }
