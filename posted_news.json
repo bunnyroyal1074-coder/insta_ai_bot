@@ -27,7 +27,8 @@
     "ai_20260625_143744",
     "ai_20260626_121624",
     "ai_20260629_134306",
-    "ai_20260710_084320"
+    "ai_20260710_084320",
+    "ai_20260714_092752"
   ],
   "last_post_time": "2026-07-10T09:35:44.202288",
   "last_morning_post_date": "2026-07-10",
@@ -59,7 +60,8 @@
     "INDIA TECH: BOOM & SHIFT!",
     "HACKATHON JOB HUNTING!",
     "TECH INDIA: DYNAMIC SHIFT!",
-    "INDIAN TECH ASCENT!"
+    "INDIAN TECH ASCENT!",
+    "AI JOB HUNTING POWER-UPS!"
   ],
   "posted_items": [
     {
@@ -424,6 +426,21 @@
       "caption_explanation": "Indian tech landscape lo jarugutunna exciting changes ni ee post explore chestundi. Fintech growth, startup job boom, and women's rising role in tech gurinchi telusukondi!",
       "date": "2026-07-14 09:26:34",
       "mode": "morning"
+    },
+    {
+      "id": "ai_20260714_092752",
+      "title": "AI JOB HUNTING POWER-UPS!",
+      "bullets": [
+        "*ChatGPT* tho *customized cover letters* generate cheyyandi, *every role ki unique* ga!",
+        "*AI-powered resume builders* use chesi *ATS-friendly* resumes create cheyyandi, *shortlisting easy* avtundi!",
+        "*Interview prep ki AI chatbots* tho *mock interviews* practice cheyyandi, *real-time feedback* vasthundi!",
+        "*LinkedIn profile optimization ki AI suggestions* follow avvandi, *recruiters eye catch* chesthundi!"
+      ],
+      "cta": "AI Tools & Link in Bio! @insta_ai_bot",
+      "link": "https://www.careerbot.ai/jobsearchhacks",
+      "caption_explanation": "Job search lo *AI ni use chesi* advance avvandi! Ee post lo mee job hunt ni *supercharge chese* top AI hacks chudandi, *fast ga results* kosam.",
+      "date": "2026-07-14 09:28:56",
+      "mode": "evening"
     }
   ]
 }
