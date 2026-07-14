@@ -13,7 +13,8 @@
     "ai_20260705_075826",
     "ai_20260705_080549",
     "ai_20260710_084056",
-    "ai_20260710_093504"
+    "ai_20260710_093504",
+    "ai_20260714_092509"
   ],
   "evening_career_history": [
     "resume_ats_hack",
@@ -28,7 +29,7 @@
     "ai_20260629_134306",
     "ai_20260710_084320"
   ],
-  "last_post_time": "2026-07-10T08:44:25.277673",
+  "last_post_time": "2026-07-10T09:35:44.202288",
   "last_morning_post_date": "2026-07-10",
   "last_evening_post_date": "2026-07-10",
   "last_post_mode": "morning",
@@ -57,7 +58,8 @@
     "INDIA'S AI JOB WAVE!",
     "INDIA TECH: BOOM & SHIFT!",
     "HACKATHON JOB HUNTING!",
-    "TECH INDIA: DYNAMIC SHIFT!"
+    "TECH INDIA: DYNAMIC SHIFT!",
+    "INDIAN TECH ASCENT!"
   ],
   "posted_items": [
     {
@@ -406,6 +408,21 @@
       "link": "https://www.exampletechdigest.com/india-tech-insights",
       "caption_explanation": "Ee post lo Indian Tech current landscape gurinchi top news bytes chudandi. Fintech nunchi layoffs varaku, industry lo jarugutunna major shifts ni fast ga telusukondi!",
       "date": "2026-07-10 09:35:41",
+      "mode": "morning"
+    },
+    {
+      "id": "ai_20260714_092509",
+      "title": "INDIAN TECH ASCENT!",
+      "bullets": [
+        "India lo *Fintech Powerhouse* rise avtundi, *latest 27 firms* ni chudandi.",
+        "Indian founders *global tech landscape* ni dominate chestunnaru, *5 trillion* value tho!",
+        "Tech jobs lo *women representation* climb avtundi, *31% share* tho future bright!",
+        "FY26 lo India startup sector *80,000 fresh tech jobs* create chestundi. Ready avvandi!"
+      ],
+      "cta": "Full Report in Bio! @insta_ai_bot",
+      "link": "https://techcrunch.com/2024/07/india-tech-jobs-future/",
+      "caption_explanation": "Indian tech landscape lo jarugutunna exciting changes ni ee post explore chestundi. Fintech growth, startup job boom, and women's rising role in tech gurinchi telusukondi!",
+      "date": "2026-07-14 09:26:34",
       "mode": "morning"
     }
   ]
