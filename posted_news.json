@@ -15,7 +15,8 @@
     "ai_20260710_084056",
     "ai_20260710_093504",
     "ai_20260714_092509",
-    "ai_20260714_192308"
+    "ai_20260714_192308",
+    "ai_20260721_102626"
   ],
   "evening_career_history": [
     "resume_ats_hack",
@@ -32,7 +33,7 @@
     "ai_20260714_092752",
     "ai_20260714_192517"
   ],
-  "last_post_time": "2026-07-14T09:28:58.800603",
+  "last_post_time": "2026-07-14T19:25:58.092859",
   "last_morning_post_date": "2026-07-14",
   "last_evening_post_date": "2026-07-14",
   "last_post_mode": "morning",
@@ -65,7 +66,8 @@
     "INDIAN TECH ASCENT!",
     "AI JOB HUNTING POWER-UPS!",
     "INDIA'S TECH JOB EXPLOSION",
-    "JOB DESCRIPTION DECODE KEY!"
+    "JOB DESCRIPTION DECODE KEY!",
+    "TECH CAREER SHIFT INDIA!"
   ],
   "posted_items": [
     {
@@ -475,6 +477,21 @@
       "caption_explanation": "Job descriptions chusi *confuse avvoda* bhayya! Ee post lo *exact ga em chudalo* explain chestunnam. Your dream job *JD decoding* toh start avtundi!",
       "date": "2026-07-14 19:25:55",
       "mode": "evening"
+    },
+    {
+      "id": "ai_20260721_102626",
+      "title": "TECH CAREER SHIFT INDIA!",
+      "bullets": [
+        "India lo *AI hiring race* shuru ayindi, *opportunities ekkuva* unnay!",
+        "Our *Indian founders* global tech ki *next level impact* istunnaru, *big value* add chesaru!",
+        "Tech lo *women representation* perugutundi, *31% share* tho *career paths expand* avtunnai!",
+        "Despite AI layoffs, *FY26 varaku* India lo *80,000 fresh tech jobs* ready!"
+      ],
+      "cta": "Full Report: Link in Bio! @insta_ai_bot",
+      "link": "https://www.techjobupdates.com/india-tech-outlook",
+      "caption_explanation": "This post covers the latest Indian tech job market trends. Get ready for *fresh insights* on AI hiring, women in tech, and future opportunities.",
+      "date": "2026-07-21 10:27:12",
+      "mode": "morning"
     }
   ]
 }
