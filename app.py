@@ -760,28 +760,52 @@ def clean_text_for_font(text):
 # -------------------------------------------------------------
 # Image Generation Engine
 # -------------------------------------------------------------
+def draw_glow_blob(img, cx, cy, radius, color, max_alpha):
+    """Draws a soft glowing radial blob on the image."""
+    width, height = img.size
+    overlay = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+    odraw = ImageDraw.Draw(overlay)
+    
+    steps = 40
+    for i in range(steps):
+        r = int(radius * (steps - i) / steps)
+        alpha = int(max_alpha * (i / steps) ** 3)
+        odraw.ellipse([cx - r, cy - r, cx + r, cy + r], fill=color + (alpha,))
+        
+    return Image.alpha_composite(img.convert('RGBA'), overlay).convert('RGB')
+
 def generate_post(mode, item):
-    """Dynamically draws a beautiful social media post based on mode and content details."""
+    """Dynamically draws a premium social media post using text & vector card styling."""
     width, height = 1080, 1350
     
-    # 1. Gradient Background Setup
+    # 1. Base Gradient Background (sleek very dark base)
     gradient = Image.new('RGB', (1, height))
     if mode == "morning":
-        # Deep Indigo to Midnight Navy Gradient
-        r1, g1, b1 = 11, 19, 43
-        r2, g2, b2 = 28, 37, 65
+        r1, g1, b1 = 8, 12, 28
+        r2, g2, b2 = 14, 18, 38
         accent_color = (0, 229, 255)       # Neon Cyan
         highlight_color = (255, 234, 0)     # Neon Yellow
         badge_text = "TELUGU TECH NEWS"
-        bullet_char = "•"
+        
+        # Glow blob setup: Neon blue, Indigo & Cyan glows
+        glows = [
+            {"cx": 150, "cy": 150, "radius": 450, "color": (0, 191, 255), "max_alpha": 45},
+            {"cx": 900, "cy": 700, "radius": 500, "color": (138, 43, 226), "max_alpha": 40},
+            {"cx": 400, "cy": 1200, "radius": 400, "color": (0, 255, 255), "max_alpha": 35}
+        ]
     else:
-        # Deep Burgundy to Charcoal Plum Gradient
-        r1, g1, b1 = 35, 31, 32
-        r2, g2, b2 = 49, 10, 49
+        r1, g1, b1 = 20, 14, 20
+        r2, g2, b2 = 30, 18, 32
         accent_color = (255, 0, 127)       # Neon Pink
         highlight_color = (0, 243, 255)     # Neon Cyan
         badge_text = "CAREER HACKS"
-        bullet_char = "•"
+        
+        # Glow blob setup: Violet, pink & indigo glows
+        glows = [
+            {"cx": 930, "cy": 200, "radius": 450, "color": (255, 20, 147), "max_alpha": 45},
+            {"cx": 150, "cy": 800, "radius": 500, "color": (148, 0, 211), "max_alpha": 40},
+            {"cx": 700, "cy": 1250, "radius": 400, "color": (75, 0, 130), "max_alpha": 35}
+        ]
         
     for y in range(height):
         r = int(r1 + (r2 - r1) * (y / height))
@@ -790,154 +814,390 @@ def generate_post(mode, item):
         gradient.putpixel((0, y), (r, g, b))
         
     img = gradient.resize((width, height))
+    
+    # Draw background glowing blobs dynamically!
+    for blob in glows:
+        img = draw_glow_blob(img, blob["cx"], blob["cy"], blob["radius"], blob["color"], blob["max_alpha"])
+        
     draw = ImageDraw.Draw(img)
     
     # 2. Font Initialization
     try:
-        font_badge = ImageFont.truetype(BOLD_FONT_PATH, 32)
+        font_badge = ImageFont.truetype(BOLD_FONT_PATH, 30)
         font_cta = ImageFont.truetype(BOLD_FONT_PATH, 36)
         font_footer = ImageFont.truetype(MEDIUM_FONT_PATH, 28)
+        font_bullet_num = ImageFont.truetype(BOLD_FONT_PATH, 24)
+        font_sub = ImageFont.truetype(MEDIUM_FONT_PATH, 22)
     except Exception:
         print("[!] Using default standard font since custom fonts are not accessible.")
-        font_badge = font_cta = font_footer = ImageFont.load_default()
-
-    # 3. Draw Header Badge Box
-    badge_w = 480
-    badge_h = 70
-    badge_x1 = (width - badge_w) // 2
-    badge_y1 = 100
-    # Soft glowing background behind header badge
-    glow_layer = Image.new('RGBA', (width, height), (0, 0, 0, 0))
-    glow_draw = ImageDraw.Draw(glow_layer)
-    glow_draw.rounded_rectangle(
-        [badge_x1 - 4, badge_y1 - 4, badge_x1 + badge_w + 4, badge_y1 + badge_h + 4],
-        radius=15,
-        fill=accent_color + (80,)
+        font_badge = font_cta = font_footer = font_bullet_num = font_sub = ImageFont.load_default()
+        
+    # Select layout variety dynamically based on item ID hash
+    layout_style = hash(item.get("id", "default")) % 2
+    
+    # 3. Draw Main Glassmorphic Card Background & Border
+    card_x1, card_y1 = 70, 180
+    card_w, card_h = 940, 990
+    card_x2, card_y2 = card_x1 + card_w, card_y1 + card_h
+    
+    glass_layer = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+    gdraw = ImageDraw.Draw(glass_layer)
+    gdraw.rounded_rectangle(
+        [card_x1, card_y1, card_x2, card_y2],
+        radius=35,
+        fill=(15, 17, 26, 140)
     )
-    img = Image.alpha_composite(img.convert('RGBA'), glow_layer).convert('RGB')
+    gdraw.rounded_rectangle(
+        [card_x1, card_y1, card_x2, card_y2],
+        radius=35,
+        outline=(255, 255, 255, 25),
+        width=2
+    )
+    img = Image.alpha_composite(img.convert('RGBA'), glass_layer).convert('RGB')
     draw = ImageDraw.Draw(img)
-    
-    # Solid badge foreground
-    draw.rounded_rectangle(
-        [badge_x1, badge_y1, badge_x1 + badge_w, badge_y1 + badge_h],
-        radius=15,
-        fill=(15, 17, 26)
-    )
-    
-    # Centered Badge Text
-    if hasattr(draw, 'textbbox'):
-        tw = draw.textbbox((0, 0), badge_text, font=font_badge)[2]
-        th = draw.textbbox((0, 0), badge_text, font=font_badge)[3]
-    else:
-        tw, th = draw.textsize(badge_text, font=font_badge)
-    draw.text((badge_x1 + (badge_w - tw)//2, badge_y1 + (badge_h - th)//2 - 2), badge_text, font=font_badge, fill=accent_color)
 
-    # 4. Draw Main Headline Title (Wrapped to fit line width, with auto font scaling)
-    title_text = clean_text_for_font(item["title"])
-    title_x = 90
-    title_y = 230
-    max_title_width = width - (title_x * 2)
-    
-    # Try title font sizes from 56 down to 42 to make sure it doesn't take > 2 lines
-    for t_size in [56, 48, 42]:
-        try:
-            font_title = ImageFont.truetype(BOLD_FONT_PATH, t_size)
-        except Exception:
-            font_title = ImageFont.load_default()
-        title_line_height = t_size + 10
-        wrapped_titles = wrap_text(title_text, font_title, max_title_width, draw)
-        if len(wrapped_titles) <= 2:
-            break
-            
-    current_title_y = title_y
-    for line in wrapped_titles:
-        draw.text((title_x, current_title_y), line, font=font_title, fill=(255, 255, 255))
-        current_title_y += title_line_height
-    
-    # 5. Draw Content Bullet Points dynamically below the title
-    bullets_start_y = current_title_y + 30
-    available_height = 970 - bullets_start_y  # Keep 30px padding before CTA box at y=1000
-    
-    selected_medium_size = 36
-    selected_line_spacing = 46
-    selected_bullet_gap = 25
-    
-    # Try bullet font sizes from 36 down to 26 to auto-fit text perfectly above the CTA box
-    for m_size in [36, 32, 28, 26]:
-        try:
-            font_medium = ImageFont.truetype(MEDIUM_FONT_PATH, m_size)
-        except Exception:
-            font_medium = ImageFont.load_default()
-            
-        line_spacing = m_size + 10
-        bullet_gap = m_size - 10
+    # 4. Render Layouts
+    if layout_style == 0:
+        # ==========================================
+        # Layout 0: Infographic List Card
+        # ==========================================
         
-        # Calculate total height of bullets at this size
-        total_height = 0
-        text_x = title_x + 60
-        max_wrap_width = width - text_x - 90
+        # Draw Header Badge Box (above card)
+        badge_w = 420
+        badge_h = 60
+        badge_x1 = (width - badge_w) // 2
+        badge_y1 = 85
+        badge_x2, badge_y2 = badge_x1 + badge_w, badge_y1 + badge_h
         
-        for i, bullet in enumerate(item["bullets"]):
-            cleaned_bullet = clean_text_for_font(bullet)
-            wrapped_lines = wrap_text(cleaned_bullet, font_medium, max_wrap_width, draw)
-            total_height += len(wrapped_lines) * line_spacing
-            if i < len(item["bullets"]) - 1:
-                total_height += bullet_gap
+        glow_badge = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+        gbdraw = ImageDraw.Draw(glow_badge)
+        gbdraw.rounded_rectangle(
+            [badge_x1 - 3, badge_y1 - 3, badge_x2 + 3, badge_y2 + 3],
+            radius=30,
+            fill=accent_color + (60,)
+        )
+        img = Image.alpha_composite(img.convert('RGBA'), glow_badge).convert('RGB')
+        draw = ImageDraw.Draw(img)
+        
+        draw.rounded_rectangle(
+            [badge_x1, badge_y1, badge_x2, badge_y2],
+            radius=30,
+            fill=(10, 12, 18)
+        )
+        
+        if hasattr(draw, 'textbbox'):
+            tw = draw.textbbox((0, 0), badge_text, font=font_badge)[2]
+            th = draw.textbbox((0, 0), badge_text, font=font_badge)[3]
+        else:
+            tw, th = draw.textsize(badge_text, font=font_badge)
+        draw.text((badge_x1 + (badge_w - tw)//2, badge_y1 + (badge_h - th)//2 - 2), badge_text, font=font_badge, fill=accent_color)
+        
+        # Headline Title
+        title_text = clean_text_for_font(item["title"])
+        title_x = 120
+        title_y = 235
+        max_title_width = width - (title_x * 2)
+        
+        for t_size in [56, 48, 42]:
+            try:
+                font_title = ImageFont.truetype(BOLD_FONT_PATH, t_size)
+            except Exception:
+                font_title = ImageFont.load_default()
+            title_line_height = t_size + 10
+            wrapped_titles = wrap_text(title_text, font_title, max_title_width, draw)
+            if len(wrapped_titles) <= 2:
+                break
                 
-        if total_height <= available_height:
-            selected_medium_size = m_size
-            selected_line_spacing = line_spacing
-            selected_bullet_gap = bullet_gap
-            break
+        current_title_y = title_y
+        for line in wrapped_titles:
+            draw.text((title_x, current_title_y), line, font=font_title, fill=(255, 255, 255))
+            current_title_y += title_line_height
+            
+        # Divider Line
+        divider_y = current_title_y + 15
+        div_layer = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+        ddraw = ImageDraw.Draw(div_layer)
+        ddraw.line([(title_x, divider_y), (width - title_x, divider_y)], fill=(255, 255, 255, 35), width=2)
+        img = Image.alpha_composite(img.convert('RGBA'), div_layer).convert('RGB')
+        draw = ImageDraw.Draw(img)
+        
+        # Bullets
+        bullets_start_y = divider_y + 35
+        available_height = 1000 - bullets_start_y
+        
+        selected_medium_size = 34
+        selected_line_spacing = 44
+        selected_bullet_gap = 25
+        
+        for m_size in [34, 30, 26, 24]:
+            try:
+                font_medium = ImageFont.truetype(MEDIUM_FONT_PATH, m_size)
+            except Exception:
+                font_medium = ImageFont.load_default()
+                
+            line_spacing = m_size + 10
+            bullet_gap = m_size - 6
+            
+            total_height = 0
+            text_x = title_x + 85
+            max_wrap_width = width - text_x - 120
+            
+            for i, bullet in enumerate(item["bullets"]):
+                cleaned_bullet = clean_text_for_font(bullet)
+                wrapped_lines = wrap_text(cleaned_bullet, font_medium, max_wrap_width, draw)
+                total_height += len(wrapped_lines) * line_spacing
+                if i < len(item["bullets"]) - 1:
+                    total_height += bullet_gap
+                    
+            if total_height <= available_height:
+                selected_medium_size = m_size
+                selected_line_spacing = line_spacing
+                selected_bullet_gap = bullet_gap
+                break
+        else:
+            selected_medium_size = 24
+            selected_line_spacing = 34
+            selected_bullet_gap = 14
+            try:
+                font_medium = ImageFont.truetype(MEDIUM_FONT_PATH, 24)
+            except Exception:
+                font_medium = ImageFont.load_default()
+                
+        print(f"[*] Premium layout 0 scaling: title_size={t_size}, bullet_size={selected_medium_size}, bullets_height={total_height}/{available_height}")
+        
+        bullets_y = bullets_start_y
+        text_x = title_x + 85
+        max_wrap_width = width - text_x - 120
+        
+        for idx, bullet in enumerate(item["bullets"]):
+            cleaned_bullet = clean_text_for_font(bullet)
+            
+            # Draw Pill Badge
+            pill_w, pill_h = 60, 48
+            pill_x = title_x
+            pill_y = bullets_y - 2
+            
+            glow_pill = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+            gpdraw = ImageDraw.Draw(glow_pill)
+            gpdraw.rounded_rectangle(
+                [pill_x, pill_y, pill_x + pill_w, pill_y + pill_h],
+                radius=12,
+                outline=accent_color + (70,),
+                width=2
+            )
+            gpdraw.rounded_rectangle(
+                [pill_x, pill_y, pill_x + pill_w, pill_y + pill_h],
+                radius=12,
+                fill=(10, 12, 18, 160)
+            )
+            img = Image.alpha_composite(img.convert('RGBA'), glow_pill).convert('RGB')
+            draw = ImageDraw.Draw(img)
+            
+            num_str = f"0{idx + 1}"
+            if hasattr(draw, 'textbbox'):
+                nw = draw.textbbox((0, 0), num_str, font=font_bullet_num)[2]
+                nh = draw.textbbox((0, 0), num_str, font=font_bullet_num)[3]
+            else:
+                nw, nh = draw.textsize(num_str, font=font_bullet_num)
+            draw.text(
+                (pill_x + (pill_w - nw)//2, pill_y + (pill_h - nh)//2 - 1),
+                num_str,
+                font=font_bullet_num,
+                fill=accent_color
+            )
+            
+            # Draw wrapped lines
+            wrapped_lines = wrap_text(cleaned_bullet, font_medium, max_wrap_width, draw)
+            current_y = bullets_y
+            for line in wrapped_lines:
+                draw_styled_line(draw, text_x, current_y, line, font_medium, (255, 255, 255), highlight_color)
+                current_y += selected_line_spacing
+                
+            bullet_height = max(pill_h, current_y - bullets_y)
+            bullets_y += bullet_height + selected_bullet_gap
+            
     else:
-        # Fallback to smallest size
-        selected_medium_size = 26
-        selected_line_spacing = 36
-        selected_bullet_gap = 16
-        try:
-            font_medium = ImageFont.truetype(MEDIUM_FONT_PATH, 26)
-        except Exception:
-            font_medium = ImageFont.load_default()
-            
-    print(f"[*] Dynamic layout scaling: title_size={t_size}, bullet_size={selected_medium_size}, bullets_height={total_height}/{available_height}")
-    
-    bullets_y = bullets_start_y
-    for bullet in item["bullets"]:
-        cleaned_bullet = clean_text_for_font(bullet)
-        # Bullet Symbol
-        draw.text((title_x, bullets_y), bullet_char, font=font_medium, fill=accent_color)
+        # ==========================================
+        # Layout 1: Organic Social Thread Screenshot
+        # ==========================================
         
-        # Wrapped text block to the right of bullet
-        text_x = title_x + 60
-        max_wrap_width = width - text_x - 90
-        wrapped_lines = wrap_text(cleaned_bullet, font_medium, max_wrap_width, draw)
+        # Profile header inside card
+        header_y = 225
+        avatar_cx = 160
+        avatar_cy = header_y + 30
+        avatar_r = 30
         
-        for line in wrapped_lines:
-            draw_styled_line(draw, text_x, bullets_y, line, font_medium, (255, 255, 255), highlight_color)
-            bullets_y += selected_line_spacing
+        # Solid colored vector badge for profile avatar (No photos/images!)
+        glow_avatar = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+        gawdraw = ImageDraw.Draw(glow_avatar)
+        gawdraw.ellipse([avatar_cx - avatar_r, avatar_cy - avatar_r, avatar_cx + avatar_r, avatar_cy + avatar_r], fill=accent_color + (140,))
+        gawdraw.ellipse([avatar_cx - avatar_r + 4, avatar_cy - avatar_r + 4, avatar_cx + avatar_r - 4, avatar_cy + avatar_r - 4], fill=(10, 12, 18, 255))
+        img = Image.alpha_composite(img.convert('RGBA'), glow_avatar).convert('RGB')
+        draw = ImageDraw.Draw(img)
+        
+        # Draw a bold letter 'A' inside avatar circle for a neat look
+        avatar_txt = "A"
+        if hasattr(draw, 'textbbox'):
+            aw = draw.textbbox((0, 0), avatar_txt, font=font_bullet_num)[2]
+            ah = draw.textbbox((0, 0), avatar_txt, font=font_bullet_num)[3]
+        else:
+            aw, ah = draw.textsize(avatar_txt, font=font_bullet_num)
+        draw.text((avatar_cx - aw//2, avatar_cy - ah//2 - 2), avatar_txt, font=font_bullet_num, fill=accent_color)
+        
+        # Profile Names
+        prof_name = "@insta_ai_bot"
+        prof_sub = "Daily Tech & Career Guide"
+        draw.text((avatar_cx + 45, header_y + 4), prof_name, font=font_badge, fill=(255, 255, 255))
+        draw.text((avatar_cx + 45, header_y + 34), prof_sub, font=font_sub, fill=(160, 170, 190))
+        
+        # Headline Title
+        title_text = clean_text_for_font(item["title"])
+        title_x = 130
+        title_y = header_y + 95
+        max_title_width = width - (title_x * 2)
+        
+        for t_size in [48, 42, 38]:
+            try:
+                font_title = ImageFont.truetype(BOLD_FONT_PATH, t_size)
+            except Exception:
+                font_title = ImageFont.load_default()
+            title_line_height = t_size + 10
+            wrapped_titles = wrap_text(title_text, font_title, max_title_width, draw)
+            if len(wrapped_titles) <= 2:
+                break
+                
+        current_title_y = title_y
+        for line in wrapped_titles:
+            draw.text((title_x, current_title_y), line, font=font_title, fill=highlight_color)
+            current_title_y += title_line_height
             
-        bullets_y += selected_bullet_gap
+        # Divider Line
+        divider_y = current_title_y + 15
+        div_layer = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+        ddraw = ImageDraw.Draw(div_layer)
+        ddraw.line([(title_x, divider_y), (width - title_x, divider_y)], fill=(255, 255, 255, 30), width=1)
+        img = Image.alpha_composite(img.convert('RGBA'), div_layer).convert('RGB')
+        draw = ImageDraw.Draw(img)
+        
+        # Bullets
+        bullets_start_y = divider_y + 35
+        available_height = 1000 - bullets_start_y
+        
+        selected_medium_size = 32
+        selected_line_spacing = 42
+        selected_bullet_gap = 25
+        
+        for m_size in [32, 28, 26, 24]:
+            try:
+                font_medium = ImageFont.truetype(MEDIUM_FONT_PATH, m_size)
+            except Exception:
+                font_medium = ImageFont.load_default()
+                
+            line_spacing = m_size + 10
+            bullet_gap = m_size - 4
+            
+            total_height = 0
+            text_x = title_x + 65
+            max_wrap_width = width - text_x - 120
+            
+            for i, bullet in enumerate(item["bullets"]):
+                cleaned_bullet = clean_text_for_font(bullet)
+                wrapped_lines = wrap_text(cleaned_bullet, font_medium, max_wrap_width, draw)
+                total_height += len(wrapped_lines) * line_spacing
+                if i < len(item["bullets"]) - 1:
+                    total_height += bullet_gap
+                    
+            if total_height <= available_height:
+                selected_medium_size = m_size
+                selected_line_spacing = line_spacing
+                selected_bullet_gap = bullet_gap
+                break
+        else:
+            selected_medium_size = 24
+            selected_line_spacing = 34
+            selected_bullet_gap = 14
+            try:
+                font_medium = ImageFont.truetype(MEDIUM_FONT_PATH, 24)
+            except Exception:
+                font_medium = ImageFont.load_default()
+                
+        print(f"[*] Premium layout 1 scaling: title_size={t_size}, bullet_size={selected_medium_size}, bullets_height={total_height}/{available_height}")
+        
+        # Draw Thread Line on left
+        dot_positions = []
+        bullets_y = bullets_start_y
+        text_x = title_x + 65
+        max_wrap_width = width - text_x - 120
+        
+        # Pre-calculate dot positions to draw thread line cleanly
+        temp_y = bullets_y
+        for idx, bullet in enumerate(item["bullets"]):
+            cleaned_bullet = clean_text_for_font(bullet)
+            dot_positions.append(temp_y + selected_medium_size // 2 - 1)
+            
+            wrapped_lines = wrap_text(cleaned_bullet, font_medium, max_wrap_width, draw)
+            bullet_height = len(wrapped_lines) * selected_line_spacing
+            temp_y += bullet_height + selected_bullet_gap
+            
+        # Draw thread connecting line
+        thread_layer = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+        tldraw = ImageDraw.Draw(thread_layer)
+        tldraw.line([(title_x, dot_positions[0]), (title_x, dot_positions[-1])], fill=accent_color + (80,), width=3)
+        img = Image.alpha_composite(img.convert('RGBA'), thread_layer).convert('RGB')
+        draw = ImageDraw.Draw(img)
+        
+        # Draw bullets with glowing thread dots
+        bullets_y = bullets_start_y
+        for idx, bullet in enumerate(item["bullets"]):
+            cleaned_bullet = clean_text_for_font(bullet)
+            dot_y = dot_positions[idx]
+            
+            # Glowing dot on thread line
+            dot_r = 7
+            glow_dot = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+            gdowdraw = ImageDraw.Draw(glow_dot)
+            gdowdraw.ellipse([title_x - dot_r - 2, dot_y - dot_r - 2, title_x + dot_r + 2, dot_y + dot_r + 2], fill=accent_color + (100,))
+            gdowdraw.ellipse([title_x - dot_r + 1, dot_y - dot_r + 1, title_x + dot_r - 1, dot_y + dot_r - 1], fill=(255, 255, 255, 255))
+            img = Image.alpha_composite(img.convert('RGBA'), glow_dot).convert('RGB')
+            draw = ImageDraw.Draw(img)
+            
+            # Draw bullet text lines
+            wrapped_lines = wrap_text(cleaned_bullet, font_medium, max_wrap_width, draw)
+            current_y = bullets_y
+            for line in wrapped_lines:
+                draw_styled_line(draw, text_x, current_y, line, font_medium, (255, 255, 255), highlight_color)
+                current_y += selected_line_spacing
+                
+            bullet_height = current_y - bullets_y
+            bullets_y += bullet_height + selected_bullet_gap
 
-    # 6. Draw Call to Action (CTA) Box at bottom
-    cta_w = 900
-    cta_h = 130
-    cta_x1 = (width - cta_w) // 2
-    cta_y1 = 1000
+    # ==========================================
+    # Draw Shared CTA and Footer Elements
+    # ==========================================
     
-    # Draw double border/glow for CTA
-    draw.rounded_rectangle(
-        [cta_x1 - 2, cta_y1 - 2, cta_x1 + cta_w + 2, cta_y1 + cta_h + 2],
-        radius=20,
-        outline=accent_color,
+    # 8. Draw Call to Action (CTA) Box at bottom (inside card)
+    cta_w = 860
+    cta_h = 100
+    cta_x1 = (width - cta_w) // 2
+    cta_y1 = 1040
+    cta_x2, cta_y2 = cta_x1 + cta_w, cta_y1 + cta_h
+    
+    glow_cta = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+    gctadraw = ImageDraw.Draw(glow_cta)
+    gctadraw.rounded_rectangle(
+        [cta_x1 - 3, cta_y1 - 3, cta_x2 + 3, cta_y2 + 3],
+        radius=16,
+        outline=accent_color + (100,),
         width=3
     )
-    draw.rounded_rectangle(
-        [cta_x1, cta_y1, cta_x1 + cta_w, cta_y1 + cta_h],
-        radius=20,
-        fill=(15, 17, 26, 200)
+    gctadraw.rounded_rectangle(
+        [cta_x1, cta_y1, cta_x2, cta_y2],
+        radius=16,
+        fill=(10, 12, 18, 200)
     )
+    img = Image.alpha_composite(img.convert('RGBA'), glow_cta).convert('RGB')
+    draw = ImageDraw.Draw(img)
     
-    # Centered CTA text
     cta_text = clean_text_for_font(item["cta"])
     if hasattr(draw, 'textbbox'):
         ctw = draw.textbbox((0, 0), cta_text, font=font_cta)[2]
@@ -952,15 +1212,36 @@ def generate_post(mode, item):
         fill=highlight_color
     )
 
-    # 7. Draw Footer Profile Username
+    # 9. Draw Footer Profile Username Pill (below card)
     footer_text = "@insta_ai_bot"
+    footer_w = 300
+    footer_h = 52
+    footer_x1 = (width - footer_w) // 2
+    footer_y1 = 1240
+    footer_x2, footer_y2 = footer_x1 + footer_w, footer_y1 + footer_h
+    
+    draw.rounded_rectangle(
+        [footer_x1, footer_y1, footer_x2, footer_y2],
+        radius=26,
+        fill=(15, 17, 26),
+        outline=(255, 255, 255, 25),
+        width=1
+    )
+    
     if hasattr(draw, 'textbbox'):
         fw = draw.textbbox((0, 0), footer_text, font=font_footer)[2]
+        fh = draw.textbbox((0, 0), footer_text, font=font_footer)[3]
     else:
-        fw = draw.textsize(footer_text, font=font_footer)
-    draw.text(((width - fw)//2, 1200), footer_text, font=font_footer, fill=(255, 255, 255, 128))
-
-    # Save generated image
+        fw, fh = draw.textsize(footer_text, font=font_footer)
+        
+    draw.text(
+        (footer_x1 + (footer_w - fw)//2, footer_y1 + (footer_h - fh)//2 - 2), 
+        footer_text, 
+        font=font_footer, 
+        fill=(255, 255, 255, 220)
+    )
+    
+    # Save the generated post image
     img.save(OUTPUT_IMAGE, "PNG")
     print(f"[+] Output post image saved successfully as: '{OUTPUT_IMAGE}'")
 
